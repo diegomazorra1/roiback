@@ -82,10 +82,16 @@ WSGI_APPLICATION = 'roiback.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'roiback',
+        'USER': 'postgres',
+        'PASSWORD': 'ingenieria@',
+        'HOST': 'localhost',
+        'PORT': 5432,
+
     }
 }
+
 
 
 # Password validation
@@ -119,6 +125,9 @@ LANGUAGES=  [
 ('es-co', gettext_noop('Colombian Spanish')),
 
 ]
+LANGUAGE_CODE = 'es-co'
+
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True

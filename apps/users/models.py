@@ -13,7 +13,7 @@ class Profile(models.Model):
     bio = models.TextField(null=True, blank=True)
     super_user=models.BooleanField(null=False,blank=False,default=False)
     create_hotels=models.BooleanField(null=False,blank=False,default=False)
-    
 
+ 
     class Meta:
         ordering = ['user__username']
