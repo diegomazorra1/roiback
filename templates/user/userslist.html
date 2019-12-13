@@ -1,0 +1,135 @@
+{% extends 'base/base.html' %}
+
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+
+
+
+{% if user.is_superuser %}
+
+<div class="card shadow mb-4">
+  <!-- Card Header - Dropdown -->
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Listado de Usuarios 2</h6>
+  <!--  <div class="dropdown no-arrow">
+      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+        <div class="dropdown-header">Acciones:</div>
+        <a class="dropdown-item" href="#"><i class="far fa-calendar-plus"></i> Nuevo</a>
+      </div>
+    </div>
+  -->
+  </div>
+  <!-- Card Body -->
+  <div class="card-body">
+    {% if not object_list %}
+    <div class="alert alert-info">No Hay Usuarios</div>
+
+    {% endif %}
+    <table
+                            id="tblProducto"
+                            data-toggle="table"
+                            data-pagination="true"
+                            data-search="true"
+                            data-show-columns="true"
+                            data-show-toggle="true"
+                            data-show-fullscreen="true"
+                            data-toolbar=".buttons-toolbar"
+                            data-locale="es-NI"
+                          >
+                            <thead>
+                                <th data-sortable="true" data-field="id">Id</th>
+                                <th data-sortable="true" data-field="nombres">Nombre</th>
+                                <th data-sortable="true" data-field="apellidos">Apellidos </th>
+                                <th data-sortable="true" data-field="username">Nombre de usuario</th>
+                                <th data-field="Puede Crear Hoteles">Puede publicar Hoteles</th>
+                                 <th class="all">Acciones</th>
+
+
+                            </thead>
+                            <tbody>
+                              {% if object_list %}
+                              {% for usuario in object_list %}
+                              <tr>
+                                <td>{{ usuario.id }}</td>
+                                <td>{{ usuario.first_name }}</td>
+                                <td>{{ usuario.last_name }}</td>
+                                <td>{{ usuario.profile.bio}}</td>
+                                <td >{#item.estado|yesno:"Activo,Inactivo"#}
+                                  <div onclick="inactivar({{usuario.id}})">
+                                    {% if usuario.estado %}
+                                    <i class="far fa-thumbs-up text-primary"></i>
+                                    {% else %}
+                                    <i class="far fa-thumbs-down text-danger"></i>
+                                      {% endif %}
+                                      </div>
+                                      </td>
+
+                                        <td>
+
+
+                                          <button class="btn btn-warning btn-circle" id="btnSelect"
+                                          onclick="inactivar({{usuario.id}})">
+                                              <i class="far fa-hand-pointer"></i>
+                                          </button>
+
+                                      </td>
+
+
+
+                              </tr>
+                              {% endfor %}
+
+                              {% else %}
+                              <h1>No hay registros de ingresos </h1>
+                              {% endif %}
+                            </tbody>
+
+
+
+                          </table>
+  </div>
+</div>
+
+{% else %}
+
+  <div class="alert alert-info">No Tienes Permisos suficientes </div>
+{% endif %}
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+  function inactivar(id)
+  {
+
+      }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

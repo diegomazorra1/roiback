@@ -27,8 +27,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('registros/', include ('apps.registers.urls', namespace="registers")),
     path('usuarios/', include ('apps.users.urls', namespace="users")),
+    
 
-    path('', auth_views.LoginView.as_view(template_name='login/login.html'), name='login'),
+    path('login', auth_views.LoginView.as_view(template_name='login/login.html'), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('accounts/reset/password_reset', auth_views.PasswordResetView.as_view(), name= 'password_reset'),
     #auth_views.PasswordResetForm.as_view(),

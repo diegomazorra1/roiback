@@ -24,3 +24,8 @@ class RegisterUsers(CreateView):
 		form.fields['password1'].widget= forms.PasswordInput(attrs={'class': ' form-control form-control-user   ','placeholder':'Contraseña' })
 		form.fields['password2'].widget= forms.PasswordInput(attrs={'class': ' form-control form-control-user   ','placeholder':'Repite la Contraseña' })
 		return form
+
+
+class RegisterList(ListView):
+	model= User
+	template_name = "user/userslist.html"
